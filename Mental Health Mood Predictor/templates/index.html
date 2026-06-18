@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MoodMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- Heading -->
+    <h1 class="title">💜 Mental Health Mood Predictor</h1>
+    <p class="subtitle">Share your feelings and let AI understand your mood</p>
+
+    <div class="card-container">
+
+        <!-- LEFT INPUT CARD -->
+        <div class="card input-card">
+            <h2>How are you feeling today? 💬</h2>
+
+            <form method="POST">
+                <textarea name="text" placeholder="Type your feelings here..." required></textarea>
+
+                <button type="submit">✨ Predict My Mood</button>
+            </form>
+        </div>
+
+        <!-- RIGHT OUTPUT CARD -->
+        {% if prediction %}
+        <div class="card output-card">
+            <h2>📊 Your Mood</h2>
+
+            <h1 class="mood-text">{{ prediction }}</h1>
+
+            <p class="suggestion">{{ suggestion }}</p>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
