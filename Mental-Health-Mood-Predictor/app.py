@@ -1,12 +1,15 @@
 import streamlit as st
 import pickle
+import os
 
 st.set_page_config(page_title="Mental Health Mood Predictor", page_icon="💜")
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @st.cache_resource
 def load_model():
-    model = pickle.load(open("model.pkl", "rb"))
-    vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
+    model = pickle.load(open(os.path.join(SCRIPT_DIR, "model.pkl"), "rb"))
+    vectorizer = pickle.load(open(os.path.join(SCRIPT_DIR, "vectorizer.pkl"), "rb"))
     return model, vectorizer
 
 model, vectorizer = load_model()
